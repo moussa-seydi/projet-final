@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À propos - Friperie Chic</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="àpropos.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -15,10 +18,10 @@
     
                 <!-- Menu principal -->
                 <ul class="nav-links">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="boutique/boutique.html">Boutique</a></li>
-                    <li><a href="a-propos/a-propos.html">À propos</a></li>
-                    <li><a href="contact/contact.html">Contact</a></li>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../boutique/boutique.html">Boutique</a></li>
+                    <li><a href="">À propos</a></li>
+                    <li><a href="../contact/contact.html">Contact</a></li>
                 </ul>
     
                 <!-- Icône de menu pour les petits écrans -->
@@ -33,13 +36,53 @@
     
     <main>
         <section class="a-propos">
-            <h2>Notre histoire</h2>
-            <p>Bienvenue chez Friperie Chic, votre destination incontournable pour une mode vintage élégante et responsable. Passionnés par le charme intemporel des vêtements d’époque, nous sélectionnons avec soin des pièces uniques qui racontent une histoire tout en s'inscrivant dans une démarche éthique et durable <br/>
-
-                Chaque article de notre collection est choisi pour son style, sa qualité et son authenticité. Nous croyons en une mode circulaire, où le raffinement rime avec éco-responsabilité. Que vous recherchiez une robe rétro, un accessoire d’exception ou une pièce classique réinventée, vous trouverez chez nous des trésors à la hauteur de votre élégance.<br/>
-
-                
-                Rejoignez-nous dans cette aventure mode où chaque vêtement a une âme et où votre style devient un hommage au passé, tout en étant résolument moderne.</p>
+            <div class="container">
+                <div class="row">
+                    <!-- Texte -->
+                    <div class="col-6">
+                        <h2>Notre histoire</h2>
+                        <p>
+                            Bienvenue chez Friperie Chic, votre destination incontournable pour une mode vintage élégante et responsable. Passionnés par le charme intemporel des vêtements d’époque, nous sélectionnons avec soin des pièces uniques qui racontent une histoire tout en s'inscrivant dans une démarche éthique et durable.
+                        </p>
+                        <p>
+                            Chaque article de notre collection est choisi pour son style, sa qualité et son authenticité. Nous croyons en une mode circulaire, où le raffinement rime avec éco-responsabilité. Que vous recherchiez une robe rétro, un accessoire d’exception ou une pièce classique réinventée, vous trouverez chez nous des trésors à la hauteur de votre élégance.
+                        </p>
+                        <p>
+                            Rejoignez-nous dans cette aventure mode où chaque vêtement a une âme et où votre style devient un hommage au passé, tout en étant résolument moderne.
+                        </p>
+                        <a href="../boutique/boutique.html" class="cta-button">Découvrez notre boutique</a>
+                    </div>
+    
+                    <!-- Image ou vidéo -->
+                    <div class="col-6">
+                        <img src="https://plus.unsplash.com/premium_photo-1701069513300-2fa6f61100e7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Friperie Chic - Notre histoire" class="about-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Section Valeurs ou Engagement -->
+        <section class="engagement">
+            <div class="container">
+                <h2>Nos engagements</h2>
+                <div class="row">
+                    <div class="col-4">
+                        <i class='bx bx-recycle'></i>
+                        <h3>Mode Circulaire</h3>
+                        <p>Nous promouvons une mode durable en réutilisant et recyclant des vêtements de qualité.</p>
+                    </div>
+                    <div class="col-4">
+                        <i class='bx bx-heart'></i>
+                        <h3>Passion pour le Vintage</h3>
+                        <p>Nos sélections sont faites avec amour pour offrir des pièces uniques et authentiques.</p>
+                    </div>
+                    <div class="col-4">
+                        <i class='bx bx-globe'></i>
+                        <h3>Réduction de l'empreinte carbone</h3>
+                        <p>En favorisant les produits d'occasion, nous contribuons à réduire l'impact environnemental.</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     
@@ -53,16 +96,15 @@
                     <li><a href="#">À propos</a></li>
                     <li><a href="#">Collections</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Politique de confidentialité</a></li>
                 </ul>
             </div>
     
             <!-- Section Contact -->
             <div class="footer-section footer-contact">
                 <h3>Contactez-nous</h3>
-                <p><strong>Téléphone :</strong> +123 456 7890</p>
-                <p><strong>Email :</strong> contact@example.com</p>
-                <p><strong>Adresse :</strong> 123 Rue de la Mode, Paris, France</p>
+                <p><strong>Téléphone :</strong> +221777505189</p>
+                <p><strong>Email :</strong> seydi5142@gmail.com</p>
+                <p><strong>Adresse :</strong> 123 Rue Nord Foire, Dakar, Sénégal</p>
             </div>
     
             <!-- Section Newsletter ou Informations Supplémentaires -->

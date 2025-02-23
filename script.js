@@ -1,48 +1,81 @@
-document.addEventListener("DOMContentLoaded", () => {
-    updateTotal();
+// Sélectionner le formulaire par son ID
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+    // Empêcher le comportement par défaut du formulaire (rechargement de la page)
+    event.preventDefault();
 
-    document.body.addEventListener("click", event => {
-        if (event.target.classList.contains("quantity-btn")) {
-            const isIncrement = event.target.classList.contains("plus");
-            const item = event.target.closest(".item");
-            if (!item) return;
+    // Récupérer les valeurs des champs du formulaire
+    const nom = document.getElementById('nom').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-            const quantityElement = item.querySelector(".quantity");
-            if (!quantityElement) return;
+    // Variable pour stocker les erreurs
+    let errors = [];
 
-            let quantity = parseInt(quantityElement.textContent) || 0;
-            quantity = isIncrement ? quantity + 1 : Math.max(1, quantity - 1);
-            quantityElement.textContent = quantity;
-            updateTotal();
-        }
+    // Validation du champ "Nom"
+    if (!nom) {
+        errors.push("Le champ 'Nom' est obligatoire.");
+    }
 
-        if (event.target.classList.contains("delete-btn")) {
-            const item = event.target.closest(".item");
-            if (item) {
-                item.remove();
-                updateTotal();
-            }
-        }
+    // Validation du champ "Email"
+    if (!email) {
+        errors.push("Le champ 'Email' est obligatoire.");
+    } else if (!validateEmail(email)) {
+        errors.push("Veuillez entrer une adresse e-mail valide.");
+    }
 
-        if (event.target.classList.contains("heart-btn")) {
-            event.target.classList.toggle("liked");
-        }
-    });
+    // Validation du champ "Message"
+    if (!message) {
+        errors.push("Le champ 'Message' est obligatoire.");
+    }
+
+    // Afficher les erreurs si elles existent
+    if (errors.length > 0) {
+        alert(errors.join("\n")); // Afficher chaque erreur dans une nouvelle ligne
+        return; // Arrêter l'exécution du script
+    }
+
+    // Simuler l'envoi du formulaire avec une requête AJAX (ou fetch API)
+    simulateFormSubmission(nom, email, message);
 });
 
-function updateTotal() {
-    let total = 0;
-    document.querySelectorAll(".item").forEach(item => {
-        const priceElement = item.querySelector(".price");
-        const quantityElement = item.querySelector(".quantity");
-        if (!priceElement || !quantityElement) return;
+// Fonction pour valider l'email
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
 
-        const price = parseFloat(priceElement.textContent.replace("€", "")) || 0;
-        const quantity = parseInt(quantityElement.textContent) || 0;
-        total += price * quantity;
+// Fonction pour simuler l'envoi du formulaire
+function simulateFormSubmission(nom, email, message) {
+    // Créer un objet contenant les données du formulaire
+    const formData = {
+        nom: nom,
+        email: email,
+        message: message
+    };
+
+    // Utiliser la méthode fetch pour envoyer les données au serveur
+    fetch('contact.php', { // Remplacez 'contact.php' par l'URL de votre back-end
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Traiter la réponse JSON du serveur
+        } else {
+            throw new Error('Une erreur s\'est produite lors de l\'envoi du message.');
+        }
+    })
+    .then(data => {
+        // Réinitialiser le formulaire après succès
+        document.getElementById('contactForm').reset();
+        alert('Votre message a été envoyé avec succès !');
+    })
+    .catch(error => {
+        // Gérer les erreurs
+        console.error('Erreur :', error.message);
+        alert('Une erreur s\'est produite. Veuillez réessayer plus tard.');
     });
-    const totalElement = document.querySelector(".total-price");
-    if (totalElement) {
-        totalElement.textContent = `Total: ${total.toFixed(2)}€`;
-    }
 }
